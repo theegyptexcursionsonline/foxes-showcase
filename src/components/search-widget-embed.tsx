@@ -13,6 +13,7 @@ export function SearchWidgetEmbed() {
     script.id = scriptId;
     script.src = `${SEARCH_API_URL}/widget/foxes-widget.js`;
     script.async = true;
+    script.setAttribute("data-widget-id", "wgt_r6owSnimKzgeOZ8n6wk18w");
     script.setAttribute("data-position", "bottom-right");
     script.setAttribute("data-accent", "#10b981");
     script.setAttribute("data-agent-name", "Foxes Search AI");
