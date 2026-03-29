@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const productLinks = [
   { name: "Voice Agent", href: "/voice-agent" },
@@ -21,11 +22,7 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-pink-500 to-orange-500">
-                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-                </svg>
-              </div>
+              <Image src="/foxeslogo.png" alt="Foxes Technology" width={40} height={40} className="rounded-xl" />
               <span className="text-xl font-bold text-white">Foxes Technology</span>
             </div>
             <p className="text-sm text-white/40 max-w-sm leading-relaxed">
