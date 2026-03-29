@@ -67,6 +67,37 @@ export default function SearchAgentPage() {
       {/* Live search demo */}
       <SearchDemo />
 
+      {/* Widget Demos */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold text-teal-600 uppercase tracking-wider">Widget Modes</p>
+            <h2 className="mt-3 text-4xl font-bold text-slate-900">Four ways to embed AI search</h2>
+            <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">One script tag, multiple integration modes. Each demo page shows a live widget you can interact with.</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              { name: "Floating Chat", href: "/search-agent/floating", color: "#8b5cf6", desc: "Chat bubble in the corner — click to expand", icon: "M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" },
+              { name: "Search Bar", href: "/search-agent/search-bar", color: "#0891b2", desc: "Full-width search bar at page bottom", icon: "M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" },
+              { name: "Chat Modal", href: "/search-agent/chat-modal", color: "#f59e0b", desc: "Centered overlay modal with full chat", icon: "M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" },
+              { name: "Inline Chat", href: "/search-agent/inline-chat", color: "#10b981", desc: "Embedded directly in your page content", icon: "M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" },
+            ].map((w) => (
+              <a key={w.href} href={w.href} className="group block rounded-2xl border border-slate-200 bg-white p-6 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl text-white shadow-lg mb-4" style={{ background: w.color }}>
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d={w.icon} /></svg>
+                </div>
+                <h3 className="text-lg font-semibold text-slate-900">{w.name}</h3>
+                <p className="mt-1 text-sm text-slate-500">{w.desc}</p>
+                <p className="mt-3 text-xs font-semibold flex items-center justify-center gap-1 group-hover:gap-2 transition-all" style={{ color: w.color }}>
+                  View demo
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Features */}
       <section id="features" className="py-24 bg-slate-50">
         <div className="max-w-6xl mx-auto px-6">
