@@ -1,3 +1,7 @@
+"use client";
+
+import { WidgetEmbed } from "@/components/widget-embed";
+
 const features = [
   { title: "Embeddable Booking Widget", desc: "Drop-in booking widget with 4 modes: inline, sidebar, floating button, and calendar view. Zero dependencies, works on any site.", gradient: "from-orange-500 to-rose-500", icon: "M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" },
   { title: "Room & Property Management", desc: "Manage rooms, rates, availability, and photos from one dashboard. Bulk operations, seasonal pricing, and occupancy tracking.", gradient: "from-pink-500 to-rose-500", icon: "M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 0h.008v.008h-.008V7.5z" },
@@ -18,49 +22,136 @@ export default function HotelBookingPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-16">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-16">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-orange-950/80 to-slate-950" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-900/30 via-transparent to-transparent" />
         <div className="absolute top-1/4 left-1/3 w-96 h-96 rounded-full bg-orange-600/10 blur-3xl animate-pulse" />
         <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-rose-600/10 blur-3xl animate-pulse" style={{ animationDelay: "3s" }} />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-4 py-1.5 mb-8 backdrop-blur-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-400" />
-            </span>
-            <span className="text-sm text-white/70 font-medium">Smart Property Management</span>
-          </div>
-
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
-            Bookings on
-            <br />
-            <span className="bg-gradient-to-r from-orange-400 via-rose-400 to-pink-400 bg-clip-text text-transparent">autopilot.</span>
-          </h1>
-
-          <p className="mt-6 text-lg sm:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
-            Full-stack property management with embeddable booking widgets, guest CRM, revenue dashboards, and Stripe payments. Built for hotels, resorts, and vacation rentals.
-          </p>
-
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://foxes-ai-voice.netlify.app/register" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 via-rose-500 to-pink-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-orange-500/25 hover:shadow-2xl transition-all hover:-translate-y-0.5">
-              Start free trial
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-            </a>
-            <a href="#features" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 text-base font-medium text-white/80 hover:bg-white/5 transition">See features</a>
-          </div>
-
-          <div className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto">
-            {[{ value: "4", label: "Widget Modes" }, { value: "50+", label: "API Endpoints" }, { value: "Stripe", label: "Payments" }].map((s) => (
-              <div key={s.label} className="text-center">
-                <p className="text-3xl font-bold text-white">{s.value}</p>
-                <p className="mt-1 text-sm text-white/40">{s.label}</p>
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <div className="grid gap-12 lg:grid-cols-2 items-center">
+            {/* Left: text */}
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-4 py-1.5 mb-8 backdrop-blur-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-400" />
+                </span>
+                <span className="text-sm text-white/70 font-medium">AI Voice Agent + Smart Booking</span>
               </div>
-            ))}
+
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
+                Bookings on
+                <br />
+                <span className="bg-gradient-to-r from-orange-400 via-rose-400 to-pink-400 bg-clip-text text-transparent">autopilot.</span>
+              </h1>
+
+              <p className="mt-6 text-lg sm:text-xl text-white/60 max-w-xl leading-relaxed">
+                AI voice agent that books rooms, answers questions, and handles guests 24/7. Try it live — click the mic.
+              </p>
+
+              <div className="mt-10 flex flex-col sm:flex-row items-center lg:items-start gap-4">
+                <a href="https://foxes-ai-voice.netlify.app/register" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 via-rose-500 to-pink-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-orange-500/25 hover:shadow-2xl transition-all hover:-translate-y-0.5">
+                  Start free trial
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                </a>
+                <a href="#features" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 text-base font-medium text-white/80 hover:bg-white/5 transition">See features</a>
+              </div>
+
+              <div className="mt-12 grid grid-cols-3 gap-6 max-w-sm mx-auto lg:mx-0">
+                {[{ value: "24/7", label: "Always On" }, { value: "29+", label: "Languages" }, { value: "<2s", label: "Response" }].map((s) => (
+                  <div key={s.label} className="text-center lg:text-left">
+                    <p className="text-2xl font-bold text-white">{s.value}</p>
+                    <p className="mt-0.5 text-xs text-white/40">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: voice agent card with wave */}
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-md">
+                {/* Glow behind card */}
+                <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-orange-500/20 via-rose-500/20 to-pink-500/20 blur-2xl" />
+
+                <div className="relative rounded-3xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] border border-white/10 backdrop-blur-xl p-8 shadow-2xl">
+                  {/* Agent header */}
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="relative">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-rose-500 flex items-center justify-center shadow-lg shadow-orange-500/30">
+                        <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
+                      </div>
+                      <span className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-400 border-2 border-slate-900" />
+                      </span>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-white">Olivia</h3>
+                      <p className="text-sm text-white/50">AI Voice Concierge</p>
+                    </div>
+                  </div>
+
+                  {/* Audio wave visualization */}
+                  <div className="rounded-2xl bg-white/5 border border-white/5 p-5 mb-6">
+                    <div className="flex items-end justify-center gap-[3px] h-16">
+                      {Array.from({ length: 40 }, (_, i) => {
+                        const delay = `${(i * 0.08).toFixed(2)}s`;
+                        // varied heights for natural look
+                        const heights = [30, 55, 40, 70, 50, 85, 45, 65, 35, 80, 55, 42, 75, 38, 60, 90, 48, 72, 33, 58, 82, 44, 68, 52, 78, 36, 62, 88, 46, 56, 74, 40, 66, 50, 84, 42, 70, 54, 76, 38];
+                        const h = heights[i % heights.length];
+                        return (
+                          <div
+                            key={i}
+                            className="w-[3px] rounded-full bg-gradient-to-t from-orange-500 to-rose-400"
+                            style={{
+                              height: `${h}%`,
+                              animation: `wave 1.8s ease-in-out ${delay} infinite alternate`,
+                              opacity: 0.6 + (h / 200),
+                            }}
+                          />
+                        );
+                      })}
+                    </div>
+                    <p className="text-center text-xs text-white/30 mt-3">Listening...</p>
+                  </div>
+
+                  {/* Sample prompts */}
+                  <div className="space-y-2">
+                    <p className="text-[10px] uppercase tracking-wider text-white/30 font-medium mb-2">Try saying</p>
+                    {["Book a room for 2 on April 15th", "What's your cancellation policy?", "I want to cancel booking FX-7A4QYF"].map((q) => (
+                      <div key={q} className="flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2 text-xs text-white/50 hover:bg-white/10 hover:text-white/70 transition cursor-default">
+                        <svg className="w-3 h-3 shrink-0 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg>
+                        &ldquo;{q}&rdquo;
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Stats row */}
+                  <div className="mt-6 grid grid-cols-3 gap-3">
+                    {[{ label: "Tools", value: "17" }, { label: "Engine", value: "GPT" }, { label: "Voice", value: "ElevenLabs" }].map((s) => (
+                      <div key={s.label} className="rounded-xl bg-white/5 border border-white/5 p-2.5 text-center">
+                        <p className="text-[10px] text-white/30">{s.label}</p>
+                        <p className="text-xs font-semibold text-white/80 mt-0.5">{s.value}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* CSS for wave animation */}
+        <style>{`
+          @keyframes wave {
+            0% { transform: scaleY(0.3); }
+            100% { transform: scaleY(1); }
+          }
+        `}</style>
       </section>
+
+      <WidgetEmbed />
 
       {/* Widget modes */}
       <section className="py-24 bg-white">
