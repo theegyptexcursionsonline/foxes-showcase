@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 
 const API_URL = "https://foxesapp.netlify.app";
-const ORG_ID = "697f988b5a33570cdc5f2e9c";
+const ORG_ID = "69b700e25e8af4de376859b9";
 
 function useWidget(attrs: Record<string, string>) {
   useEffect(() => {

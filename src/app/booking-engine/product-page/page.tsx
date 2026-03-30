@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 const API = "https://foxesapp.netlify.app";
-const OID = "697f988b5a33570cdc5f2e9c";
+const OID = "69b700e25e8af4de376859b9";
 
 export default function ProductPageDemo() {
   useEffect(() => {
