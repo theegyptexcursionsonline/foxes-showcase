@@ -106,7 +106,7 @@ export default function Home() {
       </section>
 
       {/* Products */}
-      <section className="py-24 bg-white">
+      <section id="products" className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wider">Our Products</p>
@@ -182,17 +182,14 @@ export default function Home() {
       {/* CTA */}
       <section className="py-24 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-white">Ready to automate?</h2>
-          <p className="mt-4 text-lg text-white/50">Start your 14-day free trial. No credit card required.</p>
+          <h2 className="text-4xl font-bold text-white">Explore our products</h2>
+          <p className="mt-4 text-lg text-white/50">Each product works standalone or together — built on the same modern stack.</p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://foxes-ai-voice.netlify.app/register" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 via-pink-500 to-orange-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-indigo-500/25 hover:shadow-2xl transition-all hover:-translate-y-0.5">
-              Start free trial
+            <a href="#products" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 via-pink-500 to-orange-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-indigo-500/25 hover:shadow-2xl transition-all hover:-translate-y-0.5">
+              View Products
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
-            </a>
-            <a href="#" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 text-base font-medium text-white/80 hover:bg-white/5 transition">
-              Talk to sales
             </a>
           </div>
         </div>
