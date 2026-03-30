@@ -1,3 +1,19 @@
+"use client";
+import { useEffect } from "react";
+
+const API_URL = "https://foxes-hotel.netlify.app";
+const PROPERTY_ID = "69bba14234aa22d0127f7acb";
+
+function useWidget(attrs: Record<string, string>) {
+  useEffect(() => {
+    const s = document.createElement("script");
+    s.src = attrs.src;
+    Object.entries(attrs).forEach(([k, v]) => { if (k !== "src") s.setAttribute(k, v); });
+    document.body.appendChild(s);
+    return () => { try { document.body.removeChild(s); } catch {} };
+  }, []);
+}
+
 const features = [
   { title: "Multi-Channel Distribution", desc: "Sell through your website, partner sites, OTAs, and reseller networks. One inventory, every channel synced in real-time.", gradient: "from-blue-500 to-indigo-500", icon: "M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" },
   { title: "Embeddable Booking Widgets", desc: "8 widget types — modal, inline, calendar, product page, mobile drawer. Drop-in with one script tag, fully customizable.", gradient: "from-violet-500 to-purple-500", icon: "M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" },
@@ -28,6 +44,15 @@ const apiModules = [
 ];
 
 export default function BookingEnginePage() {
+  useWidget({
+    src: `${API_URL}/widget/foxes-booking.js`,
+    "data-property-id": PROPERTY_ID,
+    "data-api-url": API_URL,
+    "data-mode": "sidebar",
+    "data-accent": "#6366f1",
+    "data-button-text": "Book a Tour",
+  });
+
   return (
     <main>
       {/* Hero */}
