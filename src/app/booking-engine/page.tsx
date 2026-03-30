@@ -100,6 +100,38 @@ export default function BookingEnginePage() {
         </div>
       </section>
 
+      {/* Widget Demos */}
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold text-violet-600 uppercase tracking-wider">Live Widget Demos</p>
+            <h2 className="mt-3 text-4xl font-bold text-slate-900">See every widget in action</h2>
+            <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">Each page shows a live, interactive widget you can test. Click to explore.</p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { name: "Booking Modal", href: "/booking-engine/modal", color: "#6366f1", desc: "Full booking flow in a popup dialog" },
+              { name: "Inline Widget", href: "/booking-engine/inline", color: "#8b5cf6", desc: "Embedded booking form in page content" },
+              { name: "Calendar Embed", href: "/booking-engine/calendar", color: "#0891b2", desc: "Interactive availability calendar" },
+              { name: "Product Page", href: "/booking-engine/product-page", color: "#f59e0b", desc: "Product listing with book button" },
+              { name: "Mobile Drawer", href: "/booking-engine/mobile-drawer", color: "#10b981", desc: "Bottom sheet for mobile booking" },
+            ].map((w) => (
+              <a key={w.href} href={w.href} className="group block rounded-2xl border border-slate-200 bg-slate-50 p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl text-white shadow-lg mb-4" style={{ background: w.color }}>
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>
+                </div>
+                <h3 className="text-base font-bold text-slate-900">{w.name}</h3>
+                <p className="mt-1 text-sm text-slate-500">{w.desc}</p>
+                <p className="mt-3 text-xs font-semibold flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: w.color }}>
+                  View demo
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Architecture */}
       <section className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6">
