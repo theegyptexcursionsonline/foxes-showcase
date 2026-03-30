@@ -1,4 +1,5 @@
 import { WidgetEmbed } from "@/components/widget-embed";
+import { VoiceHeroCard } from "@/components/voice-hero-card";
 
 const features = [
   { title: "Agentic AI with Tool Calling", desc: "GPT-powered with function calling — searches knowledge bases, creates bookings, files complaints, and recommends products in real-time.", gradient: "from-indigo-500 to-blue-500", icon: "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" },
@@ -27,49 +28,68 @@ export default function VoiceAgentPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-16">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-16">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/30 via-transparent to-transparent" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-indigo-600/10 blur-3xl animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-pink-600/10 blur-3xl animate-pulse" style={{ animationDelay: "3s" }} />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-4 py-1.5 mb-8 backdrop-blur-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
-            </span>
-            <span className="text-sm text-white/70 font-medium">Live AI Voice Agent</span>
-          </div>
-
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
-            Your AI concierge
-            <br />
-            <span className="bg-gradient-to-r from-indigo-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">never sleeps.</span>
-          </h1>
-
-          <p className="mt-6 text-lg sm:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
-            Intelligent voice agents that answer calls, book tours, handle complaints, and upsell — powered by GPT with real-time knowledge base retrieval.
-          </p>
-
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#demo" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 via-pink-500 to-orange-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-indigo-500/25 hover:shadow-2xl hover:shadow-indigo-500/30 transition-all hover:-translate-y-0.5">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
-              Try the live demo
-            </a>
-            <a href="#features" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 text-base font-medium text-white/80 hover:bg-white/5 transition">
-              See features
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-            </a>
-          </div>
-
-          <div className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto">
-            {[{ value: "29+", label: "Languages" }, { value: "<2s", label: "Response time" }, { value: "24/7", label: "Availability" }].map((s) => (
-              <div key={s.label} className="text-center">
-                <p className="text-3xl font-bold text-white">{s.value}</p>
-                <p className="mt-1 text-sm text-white/40">{s.label}</p>
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <div className="grid gap-12 lg:grid-cols-2 items-center">
+            {/* Left: text */}
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/10 px-4 py-1.5 mb-8 backdrop-blur-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+                </span>
+                <span className="text-sm text-white/70 font-medium">Live AI Voice Agent</span>
               </div>
-            ))}
+
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
+                Your AI concierge
+                <br />
+                <span className="bg-gradient-to-r from-indigo-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">never sleeps.</span>
+              </h1>
+
+              <p className="mt-6 text-lg sm:text-xl text-white/60 max-w-xl leading-relaxed">
+                Intelligent voice agents that answer calls, book tours, handle complaints, and upsell — powered by GPT with real-time function calling.
+              </p>
+
+              <div className="mt-10 flex flex-col sm:flex-row items-center lg:items-start gap-4">
+                <a href="https://foxes-ai-voice.netlify.app/register" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 via-pink-500 to-orange-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-indigo-500/25 hover:shadow-2xl hover:shadow-indigo-500/30 transition-all hover:-translate-y-0.5">
+                  Start free trial
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                </a>
+                <a href="#features" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 text-base font-medium text-white/80 hover:bg-white/5 transition">
+                  See features
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                </a>
+              </div>
+
+              <div className="mt-12 grid grid-cols-3 gap-6 max-w-sm mx-auto lg:mx-0">
+                {[{ value: "29+", label: "Languages" }, { value: "<2s", label: "Response" }, { value: "24/7", label: "Always On" }].map((s) => (
+                  <div key={s.label} className="text-center lg:text-left">
+                    <p className="text-2xl font-bold text-white">{s.value}</p>
+                    <p className="mt-0.5 text-xs text-white/40">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: voice agent card with wave */}
+            <div className="flex justify-center lg:justify-end">
+              <VoiceHeroCard
+                agentName="Olivia"
+                agentRole="AI Voice Concierge"
+                accent="indigo"
+                samplePrompts={[
+                  "What tours do you offer?",
+                  "Book a Red Sea trip for 2 people",
+                  "I want to file a complaint",
+                ]}
+              />
+            </div>
           </div>
         </div>
       </section>

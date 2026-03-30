@@ -1,6 +1,7 @@
 "use client";
 
 import { WidgetEmbed } from "@/components/widget-embed";
+import { VoiceHeroCard } from "@/components/voice-hero-card";
 
 const features = [
   { title: "Embeddable Booking Widget", desc: "Drop-in booking widget with 4 modes: inline, sidebar, floating button, and calendar view. Zero dependencies, works on any site.", gradient: "from-orange-500 to-rose-500", icon: "M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" },
@@ -70,85 +71,19 @@ export default function HotelBookingPage() {
 
             {/* Right: voice agent card with wave */}
             <div className="flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-md">
-                {/* Glow behind card */}
-                <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-orange-500/20 via-rose-500/20 to-pink-500/20 blur-2xl" />
-
-                <div className="relative rounded-3xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] border border-white/10 backdrop-blur-xl p-8 shadow-2xl">
-                  {/* Agent header */}
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="relative">
-                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-rose-500 flex items-center justify-center shadow-lg shadow-orange-500/30">
-                        <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
-                      </div>
-                      <span className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                        <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-400 border-2 border-slate-900" />
-                      </span>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-white">Olivia</h3>
-                      <p className="text-sm text-white/50">AI Voice Concierge</p>
-                    </div>
-                  </div>
-
-                  {/* Audio wave visualization */}
-                  <div className="rounded-2xl bg-white/5 border border-white/5 p-5 mb-6">
-                    <div className="flex items-end justify-center gap-[3px] h-16">
-                      {Array.from({ length: 40 }, (_, i) => {
-                        const delay = `${(i * 0.08).toFixed(2)}s`;
-                        // varied heights for natural look
-                        const heights = [30, 55, 40, 70, 50, 85, 45, 65, 35, 80, 55, 42, 75, 38, 60, 90, 48, 72, 33, 58, 82, 44, 68, 52, 78, 36, 62, 88, 46, 56, 74, 40, 66, 50, 84, 42, 70, 54, 76, 38];
-                        const h = heights[i % heights.length];
-                        return (
-                          <div
-                            key={i}
-                            className="w-[3px] rounded-full bg-gradient-to-t from-orange-500 to-rose-400"
-                            style={{
-                              height: `${h}%`,
-                              animation: `wave 1.8s ease-in-out ${delay} infinite alternate`,
-                              opacity: 0.6 + (h / 200),
-                            }}
-                          />
-                        );
-                      })}
-                    </div>
-                    <p className="text-center text-xs text-white/30 mt-3">Listening...</p>
-                  </div>
-
-                  {/* Sample prompts */}
-                  <div className="space-y-2">
-                    <p className="text-[10px] uppercase tracking-wider text-white/30 font-medium mb-2">Try saying</p>
-                    {["Book a room for 2 on April 15th", "What's your cancellation policy?", "I want to cancel booking FX-7A4QYF"].map((q) => (
-                      <div key={q} className="flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2 text-xs text-white/50 hover:bg-white/10 hover:text-white/70 transition cursor-default">
-                        <svg className="w-3 h-3 shrink-0 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg>
-                        &ldquo;{q}&rdquo;
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Stats row */}
-                  <div className="mt-6 grid grid-cols-3 gap-3">
-                    {[{ label: "Tools", value: "17" }, { label: "Engine", value: "GPT" }, { label: "Voice", value: "ElevenLabs" }].map((s) => (
-                      <div key={s.label} className="rounded-xl bg-white/5 border border-white/5 p-2.5 text-center">
-                        <p className="text-[10px] text-white/30">{s.label}</p>
-                        <p className="text-xs font-semibold text-white/80 mt-0.5">{s.value}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <VoiceHeroCard
+                agentName="Olivia"
+                agentRole="AI Hotel Concierge"
+                accent="orange"
+                samplePrompts={[
+                  "Book a room for 2 on April 15th",
+                  "What's your cancellation policy?",
+                  "I want to cancel booking FX-7A4QYF",
+                ]}
+              />
             </div>
           </div>
         </div>
-
-        {/* CSS for wave animation */}
-        <style>{`
-          @keyframes wave {
-            0% { transform: scaleY(0.3); }
-            100% { transform: scaleY(1); }
-          }
-        `}</style>
       </section>
 
       <WidgetEmbed />
