@@ -5,6 +5,7 @@ const productLinks = [
   { name: "Voice Agent", href: "/voice-agent" },
   { name: "Search Agent", href: "/search-agent" },
   { name: "Hotel Booking", href: "/hotel-booking" },
+  { name: "Booking Engine", href: "/booking-engine" },
 ];
 
 const companyLinks = [

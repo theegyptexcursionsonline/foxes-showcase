@@ -46,6 +46,21 @@ const products = [
     ],
     features: ["Embeddable widgets", "Room management", "Guest CRM", "Revenue analytics"],
   },
+  {
+    name: "AI Booking Engine",
+    tagline: "Multi-channel booking at scale",
+    desc: "Complete SaaS booking platform with 8 embeddable widget types, Stripe Connect payments, multi-channel distribution, and a React Native operator app.",
+    href: "/booking-engine",
+    gradient: "from-blue-500 via-violet-500 to-purple-500",
+    shadow: "shadow-blue-500/20",
+    icon: "M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5",
+    stats: [
+      { value: "8", label: "Widget Types" },
+      { value: "33+", label: "API Modules" },
+      { value: "3", label: "Platforms" },
+    ],
+    features: ["Stripe Connect", "Multi-channel", "Operator mobile app", "AI voice agent"],
+  },
 ];
 
 export default function Home() {
