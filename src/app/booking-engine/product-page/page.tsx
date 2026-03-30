@@ -8,13 +8,16 @@ export default function ProductPageDemo() {
   useEffect(() => {
     const id = "foxes-product-widget";
     if (document.getElementById(id)) return;
+    // Product page widget reads from the container div, not the script tag
+    const container = document.getElementById("foxes-product-page");
+    if (container) {
+      container.setAttribute("data-org-id", OID);
+      container.setAttribute("data-product-id", PRODUCT_ID);
+      container.setAttribute("data-api-url", API);
+      container.setAttribute("data-primary-color", "#f59e0b");
+    }
     const s = document.createElement("script");
     s.id = id; s.src = `${API}/widget/foxes-product-page.js`;
-    s.setAttribute("data-org-id", OID);
-    s.setAttribute("data-product-id", PRODUCT_ID);
-    s.setAttribute("data-api-url", API);
-    s.setAttribute("data-container", "foxes-product-page");
-    s.setAttribute("data-primary-color", "#f59e0b");
     document.body.appendChild(s);
     return () => { try { document.body.removeChild(s); } catch {} };
   }, []);
@@ -37,13 +40,13 @@ export default function ProductPageDemo() {
           <div className="mt-10">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">How to embed</h2>
             <div className="rounded-xl bg-slate-900 p-6 overflow-x-auto">
-              <pre className="text-sm text-emerald-400 font-mono whitespace-pre">{`<div id="foxes-product-page"></div>
-<script
-  src="${API}/widget/foxes-product-page.js"
+              <pre className="text-sm text-emerald-400 font-mono whitespace-pre">{`<div id="foxes-product-page"
   data-org-id="${OID}"
+  data-product-id="${PRODUCT_ID}"
   data-api-url="${API}"
-  data-container="foxes-product-page"
-></script>`}</pre>
+  data-primary-color="#f59e0b"
+></div>
+<script src="${API}/widget/foxes-product-page.js"></script>`}</pre>
             </div>
           </div>
         </div>

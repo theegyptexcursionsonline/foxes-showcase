@@ -7,14 +7,18 @@ export default function MobileDrawerDemo() {
   useEffect(() => {
     const id = "foxes-drawer-widget";
     if (document.getElementById(id)) return;
+    const cfg = document.createElement("div");
+    cfg.id = "foxes-mobile-drawer-config";
+    cfg.setAttribute("data-org-id", OID);
+    cfg.setAttribute("data-api-url", API);
+    cfg.setAttribute("data-primary-color", "#10b981");
+    cfg.setAttribute("data-button-text", "Check Availability");
+    cfg.style.display = "none";
+    document.body.appendChild(cfg);
     const s = document.createElement("script");
     s.id = id; s.src = `${API}/widget/foxes-mobile-drawer.js`;
-    s.setAttribute("data-org-id", OID);
-    s.setAttribute("data-api-url", API);
-    s.setAttribute("data-accent", "#10b981");
-    s.setAttribute("data-button-text", "Check Availability");
     document.body.appendChild(s);
-    return () => { try { document.body.removeChild(s); } catch {} };
+    return () => { try { document.body.removeChild(s); cfg.remove(); } catch {} };
   }, []);
 
   return (

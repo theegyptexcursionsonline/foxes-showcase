@@ -10,11 +10,18 @@ export default function CalendarDemo() {
     if (document.getElementById(id)) return;
     const s = document.createElement("script");
     s.id = id; s.src = `${API}/widget/foxes-calendar-embed.js`;
-    s.setAttribute("data-org-id", OID);
-    s.setAttribute("data-product-id", PID);
-    s.setAttribute("data-api-url", API);
-    s.setAttribute("data-container", "foxes-calendar-embed");
-    s.setAttribute("data-primary-color", "#0891b2");
+    s.onload = () => {
+      // Calendar widget uses JS init, not data attributes
+      if ((window as any).FoxesCalendarEmbed) {
+        (window as any).FoxesCalendarEmbed.init({
+          containerId: "foxes-calendar-embed",
+          orgId: OID,
+          productId: PID,
+          apiUrl: API,
+          primaryColor: "#0891b2",
+        });
+      }
+    };
     document.body.appendChild(s);
     return () => { try { document.body.removeChild(s); } catch {} };
   }, []);
@@ -38,12 +45,15 @@ export default function CalendarDemo() {
             <h2 className="text-2xl font-bold text-slate-900 mb-4">How to embed</h2>
             <div className="rounded-xl bg-slate-900 p-6 overflow-x-auto">
               <pre className="text-sm text-emerald-400 font-mono whitespace-pre">{`<div id="foxes-calendar-embed"></div>
-<script
-  src="${API}/widget/foxes-calendar-embed.js"
-  data-org-id="${OID}"
-  data-api-url="${API}"
-  data-container="foxes-calendar-embed"
-></script>`}</pre>
+<script src="${API}/widget/foxes-calendar-embed.js"></script>
+<script>
+  FoxesCalendarEmbed.init({
+    containerId: "foxes-calendar-embed",
+    orgId: "${OID}",
+    productId: "${PID}",
+    apiUrl: "${API}"
+  });
+</script>`}</pre>
             </div>
           </div>
         </div>
