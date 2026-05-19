@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { VoiceTenantDemo } from "./data";
 
 // Where the embeddable voice widget is hosted. Explicit env wins; otherwise
@@ -27,15 +27,27 @@ export function openVoiceDemoWidget() {
 }
 
 export function VoiceWidgetLoader({ demo }: { demo: VoiceTenantDemo }) {
+  const [isWidgetOpen, setIsWidgetOpen] = useState(false);
+
   useEffect(() => {
     window.foxes?.("destroy", {});
     document.querySelectorAll(".foxes-c, script[data-foxes-voice-widget]").forEach((node) => node.remove());
 
+    function handleFrameState(event: MessageEvent) {
+      if (event.origin !== VOICE_APP_URL) return;
+      if (event.data?.type !== "foxes:widget-frame-state") return;
+      if (event.data.slug !== demo.slug) return;
+      setIsWidgetOpen(Boolean(event.data.isOpen));
+    }
+
+    window.addEventListener("message", handleFrameState);
+
     return () => {
+      window.removeEventListener("message", handleFrameState);
       window.foxes?.("destroy", {});
       document.querySelectorAll(".foxes-c").forEach((node) => node.remove());
     };
-  }, []);
+  }, [demo.slug]);
 
   return (
     <iframe
@@ -44,7 +56,10 @@ export function VoiceWidgetLoader({ demo }: { demo: VoiceTenantDemo }) {
       title={`${demo.company} concierge`}
       src={`${VOICE_APP_URL}/widget-frame/${demo.slug}`}
       allow="microphone; autoplay; clipboard-write"
-      className="fixed bottom-0 right-0 z-[80] h-[760px] max-h-screen w-[460px] max-w-full border-0 bg-transparent"
+      className={[
+        "fixed bottom-0 right-0 z-[80] max-h-screen max-w-full border-0 bg-transparent transition-[width,height] duration-300",
+        isWidgetOpen ? "h-[760px] w-[460px]" : "h-[112px] w-[320px]",
+      ].join(" ")}
     />
   );
 }
