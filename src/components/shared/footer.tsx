@@ -28,7 +28,14 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5 mb-4">
-              <Image src="/foxeslogo.png" alt="Foxes Technology" width={40} height={40} className="rounded-xl" />
+              <Image
+                src="/foxeslogo.png"
+                alt="Foxes Technology"
+                width={40}
+                height={40}
+                className="rounded-xl"
+                style={{ width: 40, height: 40 }}
+              />
               <span className="text-xl font-bold text-white">Foxes Technology</span>
             </div>
             <p className="text-sm text-white/40 max-w-sm leading-relaxed">

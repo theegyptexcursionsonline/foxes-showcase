@@ -23,7 +23,14 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-white/5">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/foxeslogo.png" alt="Foxes Technology" width={36} height={36} className="rounded-lg" />
+          <Image
+            src="/foxeslogo.png"
+            alt="Foxes Technology"
+            width={36}
+            height={36}
+            className="rounded-lg"
+            style={{ width: 36, height: 36 }}
+          />
           <span className="text-lg font-bold text-white tracking-tight">Foxes</span>
         </Link>
 
