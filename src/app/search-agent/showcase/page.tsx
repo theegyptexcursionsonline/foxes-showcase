@@ -90,6 +90,18 @@ const DEMOS: Demo[] = [
     glow: "linear-gradient(135deg, #4ade80, #15803d)",
     Icon: Sparkles,
   },
+  {
+    href: "/search-agent/showcase/concierge-workspace",
+    brand: "Foxes Concierge Workspace",
+    tagline: "The newest split-screen assistant with chat, results, compare, map, and itinerary views.",
+    surface: "Premium AI workspace",
+    widget: "Slide-in full-height concierge",
+    prompt: "Plan a best-value Egypt trip",
+    answer: "Ask once, then review catalog matches, booking links, map context, and itinerary structure side by side.",
+    accent: "#8b5cf6",
+    glow: "linear-gradient(135deg, #8b5cf6, #14b8a6)",
+    Icon: LayoutPanelLeft,
+  },
 ];
 
 const PROOF = [
@@ -147,7 +159,7 @@ export default function ShowcasePage() {
           </span>
           <h1>
             One concierge engine.
-            <span>Five storefronts.</span>
+            <span>Six storefronts.</span>
           </h1>
           <p>
             A dark, client-ready gallery for the Search Unit. Each route is a working storefront
