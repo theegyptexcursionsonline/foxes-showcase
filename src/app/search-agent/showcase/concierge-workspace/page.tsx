@@ -32,6 +32,32 @@ export default function ConciergeWorkspaceShowcase() {
   const agentUrl = useAgentUrl();
   const [open, setOpen] = useState(true);
   const [runId, setRunId] = useState(1);
+  const [widgetId, setWidgetId] = useState("");
+  const [agentName, setAgentName] = useState("Foxes AI Concierge");
+
+  useEffect(() => {
+    let cancelled = false;
+    async function loadWidgetMeta() {
+      try {
+        const discovery = await fetch(`${agentUrl}/api/widget/preview-data?discover=1&mode=concierge`);
+        const discoveryJson = await discovery.json();
+        const resolvedWidgetId = discoveryJson?.defaultWidgetId;
+        if (!resolvedWidgetId || cancelled) return;
+
+        setWidgetId(resolvedWidgetId);
+        const meta = await fetch(`${agentUrl}/api/widget/preview-data?widgetId=${resolvedWidgetId}&metaOnly=1`);
+        const metaJson = await meta.json();
+        const resolvedAgentName = metaJson?.data?.agentName;
+        if (!cancelled && resolvedAgentName) setAgentName(resolvedAgentName);
+      } catch {
+        // Keep the page usable with the default showcase copy.
+      }
+    }
+    loadWidgetMeta();
+    return () => {
+      cancelled = true;
+    };
+  }, [agentUrl]);
 
   const iframeSrc = useMemo(() => {
     const params = new URLSearchParams({
@@ -39,8 +65,9 @@ export default function ConciergeWorkspaceShowcase() {
       prompt: "Find best-value Egypt tours with images, prices, duration, and booking links",
       run: String(runId),
     });
+    if (widgetId) params.set("widgetId", widgetId);
     return `${agentUrl}/demo/preview?${params.toString()}`;
-  }, [agentUrl, runId]);
+  }, [agentUrl, runId, widgetId]);
 
   useEffect(() => {
     const onMessage = (event: MessageEvent) => {
@@ -161,7 +188,7 @@ export default function ConciergeWorkspaceShowcase() {
                   <img src="/foxeslogo.png" alt="" />
                 </span>
                 <div>
-                  <strong>Foxes AI Concierge</strong>
+                  <strong>{agentName}</strong>
                   <span><i /> Online · live catalog search</span>
                 </div>
               </div>
@@ -485,7 +512,7 @@ export default function ConciergeWorkspaceShowcase() {
         .workspace-drawer {
           position: relative;
           z-index: 1;
-          width: min(1040px, 100vw);
+          width: min(1440px, calc(100vw - 28px));
           height: 100vh;
           background: #f8fafc;
           color: #0f172a;
