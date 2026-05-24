@@ -24,6 +24,14 @@ type Demo = {
 
 const DEMOS: Demo[] = [
   {
+    href: "/search-agent/showcase/concierge-workspace",
+    title: "Concierge Workspace",
+    surface: "New split workspace",
+    mode: "Slide-in full-height",
+    note: "Chat, results, compare, map, and itinerary views in one workspace.",
+    Icon: LayoutPanelLeft,
+  },
+  {
     href: "/search-agent/showcase/sahara-trails",
     title: "Floating Concierge",
     surface: "Tour operator page",
@@ -62,14 +70,6 @@ const DEMOS: Demo[] = [
     mode: "Modal chat",
     note: "Focused support flow for booking, policy, and refund questions.",
     Icon: Sparkles,
-  },
-  {
-    href: "/search-agent/showcase/concierge-workspace",
-    title: "Concierge Workspace",
-    surface: "New split workspace",
-    mode: "Slide-in full-height",
-    note: "Chat, results, compare, map, and itinerary views in one workspace.",
-    Icon: LayoutPanelLeft,
   },
 ];
 
@@ -122,7 +122,11 @@ export default function ShowcasePage() {
           {DEMOS.map((demo) => {
             const Icon = demo.Icon;
             return (
-              <Link className="demo-card" href={demo.href} key={demo.href}>
+              <Link
+                className={`demo-card ${demo.href.includes("concierge-workspace") ? "featured" : ""}`}
+                href={demo.href}
+                key={demo.href}
+              >
                 <div className="demo-icon">
                   <Icon size={18} strokeWidth={2.4} />
                 </div>
@@ -287,23 +291,23 @@ export default function ShowcasePage() {
 
         .demo-grid {
           display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 14px;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 12px;
           padding-top: 28px;
         }
 
         .demo-card {
-          min-height: 236px;
+          min-height: 174px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          border-radius: 22px;
+          border-radius: 18px;
           border: 1px solid rgba(255, 255, 255, 0.09);
           background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.025)),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.022)),
             #0d111b;
           color: inherit;
-          padding: 20px;
+          padding: 18px;
           text-decoration: none;
           transition:
             transform 0.2s ease,
@@ -312,16 +316,29 @@ export default function ShowcasePage() {
         }
 
         .demo-card:hover {
-          transform: translateY(-2px);
+          transform: translateY(-1px);
           border-color: rgba(167, 139, 250, 0.42);
           background:
-            linear-gradient(180deg, rgba(124, 58, 237, 0.14), rgba(255, 255, 255, 0.03)),
+            linear-gradient(180deg, rgba(124, 58, 237, 0.1), rgba(255, 255, 255, 0.025)),
             #0d111b;
         }
 
+        .demo-card.featured {
+          grid-column: 1 / -1;
+          min-height: 138px;
+          display: grid;
+          grid-template-columns: 46px minmax(0, 1fr) auto;
+          align-items: center;
+          gap: 18px;
+          background:
+            linear-gradient(90deg, rgba(124, 58, 237, 0.16), rgba(20, 184, 166, 0.08)),
+            #0d111b;
+          border-color: rgba(167, 139, 250, 0.2);
+        }
+
         .demo-icon {
-          width: 42px;
-          height: 42px;
+          width: 38px;
+          height: 38px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -331,8 +348,18 @@ export default function ShowcasePage() {
           border: 1px solid rgba(167, 139, 250, 0.16);
         }
 
+        .demo-card.featured .demo-icon {
+          width: 46px;
+          height: 46px;
+          border-radius: 15px;
+        }
+
         .demo-copy {
-          margin-top: 22px;
+          margin-top: 18px;
+        }
+
+        .demo-card.featured .demo-copy {
+          margin-top: 0;
         }
 
         .demo-copy span {
@@ -346,10 +373,14 @@ export default function ShowcasePage() {
         .demo-copy h2 {
           margin-top: 8px;
           color: #fff;
-          font-size: 24px;
+          font-size: 22px;
           line-height: 1.05;
           letter-spacing: -0.035em;
           font-weight: 920;
+        }
+
+        .demo-card.featured .demo-copy h2 {
+          font-size: 26px;
         }
 
         .demo-copy p {
@@ -364,10 +395,19 @@ export default function ShowcasePage() {
           align-items: center;
           justify-content: space-between;
           gap: 12px;
-          margin-top: 24px;
-          padding-top: 16px;
+          margin-top: 20px;
+          padding-top: 14px;
           border-top: 1px solid rgba(255, 255, 255, 0.07);
           color: #d5dbea;
+        }
+
+        .demo-card.featured .demo-foot {
+          min-width: 192px;
+          margin-top: 0;
+          padding-top: 0;
+          border-top: 0;
+          border-left: 1px solid rgba(255, 255, 255, 0.08);
+          padding-left: 18px;
         }
 
         .demo-foot strong {
@@ -421,6 +461,21 @@ export default function ShowcasePage() {
           .status-card {
             max-width: 520px;
           }
+
+          .demo-card.featured {
+            grid-template-columns: 1fr;
+            align-items: stretch;
+            gap: 0;
+          }
+
+          .demo-card.featured .demo-foot {
+            min-width: 0;
+            margin-top: 20px;
+            padding-top: 14px;
+            padding-left: 0;
+            border-left: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+          }
         }
 
         @media (max-width: 560px) {
@@ -448,8 +503,8 @@ export default function ShowcasePage() {
           }
 
           .demo-card {
-            min-height: 218px;
-            border-radius: 20px;
+            min-height: 168px;
+            border-radius: 18px;
           }
         }
       `}</style>
