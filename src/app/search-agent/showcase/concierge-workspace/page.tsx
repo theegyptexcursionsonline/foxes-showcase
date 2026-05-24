@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 
 const LIVE_AGENT_URL = "https://ai-search-agent.netlify.app";
+const SHOWCASE_CONCIERGE_WIDGET_ID = "wgt_6JW5umlfasNQfJywtFPs6g";
 
 function useAgentUrl() {
   const [agentUrl, setAgentUrl] = useState(LIVE_AGENT_URL);
@@ -32,20 +33,14 @@ export default function ConciergeWorkspaceShowcase() {
   const agentUrl = useAgentUrl();
   const [open, setOpen] = useState(true);
   const [runId, setRunId] = useState(1);
-  const [widgetId, setWidgetId] = useState("");
+  const [widgetId] = useState(SHOWCASE_CONCIERGE_WIDGET_ID);
   const [agentName, setAgentName] = useState("Foxes AI Concierge");
 
   useEffect(() => {
     let cancelled = false;
     async function loadWidgetMeta() {
       try {
-        const discovery = await fetch(`${agentUrl}/api/widget/preview-data?discover=1&mode=concierge`);
-        const discoveryJson = await discovery.json();
-        const resolvedWidgetId = discoveryJson?.defaultWidgetId;
-        if (!resolvedWidgetId || cancelled) return;
-
-        setWidgetId(resolvedWidgetId);
-        const meta = await fetch(`${agentUrl}/api/widget/preview-data?widgetId=${resolvedWidgetId}&metaOnly=1`);
+        const meta = await fetch(`${agentUrl}/api/widget/preview-data?widgetId=${widgetId}&metaOnly=1`);
         const metaJson = await meta.json();
         const resolvedAgentName = metaJson?.data?.agentName;
         if (!cancelled && resolvedAgentName) setAgentName(resolvedAgentName);
@@ -57,7 +52,7 @@ export default function ConciergeWorkspaceShowcase() {
     return () => {
       cancelled = true;
     };
-  }, [agentUrl]);
+  }, [agentUrl, widgetId]);
 
   const iframeSrc = useMemo(() => {
     const params = new URLSearchParams({
