@@ -2,6 +2,9 @@
 
 import { useState, useEffect, useCallback } from "react";
 
+type FoxesCommand = (cmd: string, opts?: object) => void;
+const foxesApi = () => (window as unknown as { foxes?: FoxesCommand }).foxes;
+
 interface VoiceHeroCardProps {
   agentName?: string;
   agentRole?: string;
@@ -25,7 +28,7 @@ export function VoiceHeroCard({
   // Check if widget is loaded
   useEffect(() => {
     const check = setInterval(() => {
-      if ((window as any).foxes) {
+      if (foxesApi()) {
         setWidgetReady(true);
         clearInterval(check);
       }
@@ -34,16 +37,15 @@ export function VoiceHeroCard({
   }, []);
 
   const handleMicClick = useCallback(() => {
-    const foxes = (window as any).foxes;
+    const foxes = foxesApi();
     if (!foxes) return;
 
+    // Opens the concierge panel; the guest then chooses to type or start a call.
     if (!isActive) {
       foxes("open");
-      // small delay then start the call
-      setTimeout(() => foxes("start"), 400);
       setIsActive(true);
     } else {
-      foxes("end");
+      foxes("close");
       setIsActive(false);
     }
   }, [isActive]);
@@ -122,14 +124,14 @@ export function VoiceHeroCard({
               ) : (
                 <>
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
-                  {widgetReady ? "Talk to agent" : "Loading..."}
+                  {widgetReady ? (isActive ? "Close concierge" : "Open concierge") : "Loading..."}
                 </>
               )}
             </button>
           </div>
 
           <p className="text-center text-xs text-white/30 mt-2">
-            {isActive ? "Speaking with agent..." : "Click to start a voice conversation"}
+            {isActive ? "Speaking with agent..." : "Type or talk, in English or Arabic"}
           </p>
         </div>
 
@@ -144,15 +146,6 @@ export function VoiceHeroCard({
           ))}
         </div>
 
-        {/* Stats */}
-        <div className="mt-6 grid grid-cols-3 gap-3">
-          {[{ label: "Tools", value: "17" }, { label: "Engine", value: "GPT" }, { label: "Voice", value: "ElevenLabs" }].map((s) => (
-            <div key={s.label} className="rounded-xl bg-white/5 border border-white/5 p-2.5 text-center">
-              <p className="text-[10px] text-white/30">{s.label}</p>
-              <p className="text-xs font-semibold text-white/80 mt-0.5">{s.value}</p>
-            </div>
-          ))}
-        </div>
       </div>
 
       <style>{`

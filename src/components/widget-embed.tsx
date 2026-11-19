@@ -1,40 +1,28 @@
 "use client";
 
 import { useEffect } from "react";
+import { VOICE_DEMO } from "@/lib/showcase-config";
 
-const WIDGET_ID = "69a6db203d7b0fedf3d8b5c7";
-const BACKEND_URL = "http://localhost:5050";
-
+/**
+ * Loads the production AI Voice widget for the Voice demo workspace.
+ * The workspace only answers on sites it has approved, so this works on the
+ * published showcase host and is refused anywhere else.
+ */
 export function WidgetEmbed() {
   useEffect(() => {
-    // Check if script already loaded
-    if (document.querySelector('script[data-foxes-widget]')) return;
-
+    if (document.querySelector("script[data-foxes-voice-embed]")) return;
     const script = document.createElement("script");
-    script.src = `${BACKEND_URL}/widget.js`;
+    script.src = VOICE_DEMO.scriptUrl;
     script.async = true;
-    script.setAttribute("data-foxes-widget", "true");
+    script.setAttribute("data-foxes-voice-embed", "true");
+    script.setAttribute("data-foxes-api-key", VOICE_DEMO.publicKey);
+    script.setAttribute("data-foxes-agent-id", VOICE_DEMO.agentId);
+    script.setAttribute("data-foxes-language", "en");
     document.body.appendChild(script);
-
-    script.onload = () => {
-      // The widget script defines window.foxes — wait for it
-      const tryInit = (attempts = 0) => {
-        if ((window as any).foxes) {
-          (window as any).foxes("init", {
-            widgetId: WIDGET_ID,
-            baseUrl: BACKEND_URL,
-          });
-        } else if (attempts < 20) {
-          setTimeout(() => tryInit(attempts + 1), 200);
-        }
-      };
-      tryInit();
-    };
-
     return () => {
-      // Cleanup on unmount
-      const el = document.querySelector('script[data-foxes-widget]');
-      if (el) el.remove();
+      const w = window as unknown as { foxes?: (cmd: string, opts?: object) => void };
+      w.foxes?.("destroy", {});
+      script.remove();
     };
   }, []);
 

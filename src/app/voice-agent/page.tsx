@@ -2,26 +2,26 @@ import { WidgetEmbed } from "@/components/widget-embed";
 import { VoiceHeroCard } from "@/components/voice-hero-card";
 
 const features = [
-  { title: "Agentic AI with Tool Calling", desc: "GPT-powered with function calling — searches knowledge bases, creates bookings, files complaints, and recommends products in real-time.", gradient: "from-indigo-500 to-blue-500", icon: "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" },
-  { title: "Natural Voice Conversations", desc: "Deepgram STT + TTS for ultra-low latency. Sentence-level streaming — voices sound human, not robotic.", gradient: "from-pink-500 to-rose-500", icon: "M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" },
-  { title: "Knowledge Base RAG", desc: "Pinecone vector search retrieves relevant documents in real-time. Your agent answers with facts, not hallucinations.", gradient: "from-orange-500 to-amber-500", icon: "M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" },
-  { title: "29+ Languages", desc: "Speak to customers in their language. Arabic, English, French, Spanish, and 25 more — with automatic detection.", gradient: "from-emerald-500 to-teal-500", icon: "M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" },
-  { title: "Multi-Channel Deploy", desc: "Deploy on phone (Twilio), web widget, WhatsApp, or IVR. One agent, every channel.", gradient: "from-violet-500 to-purple-500", icon: "M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" },
-  { title: "Enterprise Security", desc: "AES-256 encryption, JWT auth, rate limiting, and role-based access. Built for production.", gradient: "from-cyan-500 to-blue-500", icon: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" },
+  { title: "Answers from your own tours", desc: "Visitors ask about trips, pickup and timing; the concierge answers from the business's own knowledge and says so when it does not know.", gradient: "from-indigo-500 to-blue-500", icon: "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" },
+  { title: "Spoken or typed", desc: "Guests can start a voice call or simply type. Typed chat needs no microphone.", gradient: "from-pink-500 to-rose-500", icon: "M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" },
+  { title: "Honest about prices", desc: "When a price is not in the business's knowledge, it says so and offers to have the team confirm, instead of guessing.", gradient: "from-orange-500 to-amber-500", icon: "M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" },
+  { title: "English and Arabic", desc: "Guests switch language in the widget; Arabic reads right to left.", gradient: "from-emerald-500 to-teal-500", icon: "M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" },
+  { title: "One-line install", desc: "Add one script tag to your website. The widget only answers on the sites you approve.", gradient: "from-violet-500 to-purple-500", icon: "M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" },
+  { title: "Hands over to your team", desc: "When a request needs a person, it asks for contact details so your team can follow up.", gradient: "from-cyan-500 to-blue-500", icon: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" },
 ];
 
 const sampleQuestions = [
   "What tours do you offer?",
-  "How much is the Pyramids & Nile Cruise?",
-  "What's your cancellation policy?",
-  "I want to book a Red Sea trip for 2",
-  "Do you have Arabic-speaking guides?",
+  "Do you pick up from El Gouna?",
+  "Which trip suits a family with young children?",
+  "How much is a snorkeling trip for 4 adults?",
+  "ما هي الرحلات المتاحة؟",
 ];
 
 const steps = [
-  { num: "01", title: "User speaks or types", desc: "Voice is captured via the browser microphone and transcribed using Deepgram Nova-2 in real-time, or the user types a message directly.", color: "text-indigo-600", bg: "bg-indigo-50", border: "border-indigo-200" },
-  { num: "02", title: "AI processes with tools", desc: "GPT analyzes the request, searches the knowledge base via Pinecone vector similarity, and calls tools like booking or complaint handlers.", color: "text-pink-600", bg: "bg-pink-50", border: "border-pink-200" },
-  { num: "03", title: "Voice response streams back", desc: "The response is streamed sentence-by-sentence to Deepgram TTS, generating natural audio that plays as it arrives — under 2 seconds.", color: "text-orange-600", bg: "bg-orange-50", border: "border-orange-200" },
+  { num: "01", title: "The guest asks", desc: "By voice or by typing, in English or Arabic, on your website.", color: "text-indigo-600", bg: "bg-indigo-50", border: "border-indigo-200" },
+  { num: "02", title: "The concierge looks it up", desc: "It reads your knowledge for that question and keeps the conversation's context.", color: "text-pink-600", bg: "bg-pink-50", border: "border-pink-200" },
+  { num: "03", title: "It answers or hands over", desc: "A clear answer, or an honest note and a hand-over to your team.", color: "text-orange-600", bg: "bg-orange-50", border: "border-orange-200" },
 ];
 
 export default function VoiceAgentPage() {
@@ -43,7 +43,7 @@ export default function VoiceAgentPage() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
                 </span>
-                <span className="text-sm text-white/70 font-medium">Live AI Voice Agent</span>
+                <span className="text-sm text-white/70 font-medium">AI Voice, live on a demo business</span>
               </div>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
@@ -53,12 +53,12 @@ export default function VoiceAgentPage() {
               </h1>
 
               <p className="mt-6 text-lg sm:text-xl text-white/60 max-w-xl leading-relaxed">
-                Intelligent voice agents that answer calls, book tours, handle complaints, and upsell — powered by GPT with real-time function calling.
+                A website concierge that answers guests by voice or text, from your own tours. This page runs it for Red Sea Trails, a demo tour business in Hurghada.
               </p>
 
               <div className="mt-10 flex flex-col sm:flex-row items-center lg:items-start gap-4">
-                <a href="https://foxes-ai-voice.netlify.app/register" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 via-pink-500 to-orange-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-indigo-500/25 hover:shadow-2xl hover:shadow-indigo-500/30 transition-all hover:-translate-y-0.5">
-                  Start free trial
+                <a href="https://voice.foxestechnology.com/register" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 via-pink-500 to-orange-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-indigo-500/25 hover:shadow-2xl hover:shadow-indigo-500/30 transition-all hover:-translate-y-0.5">
+                  Request access
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
                 </a>
                 <a href="#features" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 text-base font-medium text-white/80 hover:bg-white/5 transition">
@@ -67,26 +67,18 @@ export default function VoiceAgentPage() {
                 </a>
               </div>
 
-              <div className="mt-12 grid grid-cols-3 gap-6 max-w-sm mx-auto lg:mx-0">
-                {[{ value: "29+", label: "Languages" }, { value: "<2s", label: "Response" }, { value: "24/7", label: "Always On" }].map((s) => (
-                  <div key={s.label} className="text-center lg:text-left">
-                    <p className="text-2xl font-bold text-white">{s.value}</p>
-                    <p className="mt-0.5 text-xs text-white/40">{s.label}</p>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Right: voice agent card with wave */}
             <div className="flex justify-center lg:justify-end">
               <VoiceHeroCard
-                agentName="Olivia"
-                agentRole="AI Voice Concierge"
+                agentName="Rami"
+                agentRole="Red Sea Trails concierge (demo)"
                 accent="indigo"
                 samplePrompts={[
                   "What tours do you offer?",
-                  "Book a Red Sea trip for 2 people",
-                  "I want to file a complaint",
+                  "Do you pick up from Makadi Bay?",
+                  "Is snorkeling good for children?",
                 ]}
               />
             </div>
@@ -99,8 +91,8 @@ export default function VoiceAgentPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wider">Capabilities</p>
-            <h2 className="mt-3 text-4xl font-bold text-slate-900">Everything your voice agent needs</h2>
-            <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">Built for hospitality, travel, and service businesses that want AI-powered conversations without the complexity.</p>
+            <h2 className="mt-3 text-4xl font-bold text-slate-900">What the concierge does</h2>
+            <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">Built for tour and travel businesses that want every website visitor answered.</p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
@@ -121,8 +113,8 @@ export default function VoiceAgentPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="text-sm font-semibold text-pink-600 uppercase tracking-wider">Live Demo</p>
-            <h2 className="mt-3 text-4xl font-bold text-slate-900">Talk to our AI agent now</h2>
-            <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">Click the voice widget in the bottom-right corner to start a conversation. Ask anything about Egypt tours — the agent has a full knowledge base.</p>
+            <h2 className="mt-3 text-4xl font-bold text-slate-900">Talk to the demo concierge now</h2>
+            <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">Open the widget in the bottom-right corner and type or speak. Rami answers for Red Sea Trails, a demo tour business; it is not a real company, so no booking is made.</p>
           </div>
           <div className="grid gap-10 lg:grid-cols-2 items-center">
             <div>
@@ -145,11 +137,11 @@ export default function VoiceAgentPage() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                     <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400" />
                   </span>
-                  <span className="text-white font-medium">Emma is listening...</span>
+                  <span className="text-white font-medium">Rami is ready</span>
                 </div>
-                <p className="mt-6 text-white/40 text-sm">Click the microphone button in the bottom-right corner</p>
+                <p className="mt-6 text-white/40 text-sm">Open the widget in the bottom-right corner</p>
                 <div className="mt-8 grid grid-cols-3 gap-4">
-                  {[{ label: "Agent", value: "Emma" }, { label: "Engine", value: "GPT + Deepgram" }, { label: "KB Docs", value: "14" }].map((item) => (
+                  {[{ label: "Concierge", value: "Rami" }, { label: "Business", value: "Red Sea Trails" }, { label: "Languages", value: "EN · AR" }].map((item) => (
                     <div key={item.label} className="rounded-xl bg-white/5 border border-white/10 p-3">
                       <p className="text-xs text-white/40">{item.label}</p>
                       <p className="text-sm font-semibold text-white mt-0.5">{item.value}</p>
@@ -171,7 +163,7 @@ export default function VoiceAgentPage() {
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="text-sm font-semibold text-orange-600 uppercase tracking-wider">How It Works</p>
-            <h2 className="mt-3 text-4xl font-bold text-slate-900">Three steps to a conversation</h2>
+            <h2 className="mt-3 text-4xl font-bold text-slate-900">How a conversation goes</h2>
           </div>
           <div className="space-y-6">
             {steps.map((step) => (
@@ -183,14 +175,6 @@ export default function VoiceAgentPage() {
                 </div>
               </div>
             ))}
-          </div>
-          <div className="mt-16 text-center">
-            <p className="text-xs uppercase tracking-wider text-slate-400 mb-6">Powered by</p>
-            <div className="flex flex-wrap items-center justify-center gap-4 text-sm font-medium text-slate-400">
-              {["OpenAI GPT", "Deepgram Nova-2", "Deepgram TTS", "ElevenLabs", "MongoDB Atlas", "Pinecone", "Node.js", "Next.js"].map((tech) => (
-                <span key={tech} className="rounded-full border border-slate-200 bg-white px-4 py-2 shadow-sm">{tech}</span>
-              ))}
-            </div>
           </div>
         </div>
       </section>

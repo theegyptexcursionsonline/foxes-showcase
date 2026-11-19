@@ -1,36 +1,56 @@
 "use client";
 
 import { useEffect } from "react";
+import { SEARCH_DEMO } from "@/lib/showcase-config";
 
-const SEARCH_API_URL = "https://ai-search-agent.netlify.app";
-
+/** Loads the production AI Search bar bound to the Search demo widget. */
 export function SearchWidgetEmbed() {
   useEffect(() => {
-    const scriptId = "foxes-search-widget-script";
-    if (document.getElementById(scriptId)) return;
-
+    if (document.getElementById("foxes-launcher-host")) return;
     const script = document.createElement("script");
-    script.id = scriptId;
-    script.src = `${SEARCH_API_URL}/widget/foxes-widget.js`;
+    script.id = "foxes-search-launcher-script";
+    script.src = SEARCH_DEMO.scriptUrl;
     script.async = true;
-    script.setAttribute("data-widget-id", "wgt_r6owSnimKzgeOZ8n6wk18w");
-    script.setAttribute("data-position", "bottom-right");
-    script.setAttribute("data-accent", "#10b981");
-    script.setAttribute("data-agent-name", "Foxes Search AI");
-    script.setAttribute("data-greeting", "Hi! Search for tours, destinations, or ask me anything about travel.");
-    script.setAttribute("data-placeholder", "Try: Best pyramids tour, snorkeling in Red Sea...");
-    script.setAttribute("data-track-events", "true");
-    script.setAttribute("data-theme", "forest");
+    script.setAttribute("data-widget-id", SEARCH_DEMO.widgetId);
+    script.setAttribute("data-style", "searchbar");
+    script.setAttribute("data-label", "Search Egypt trips");
+    script.setAttribute("data-kicker", "AI Search demo");
+    script.setAttribute("data-placeholder", "Try: desert safari with dinner");
+    script.setAttribute("data-color", "#059669");
+    script.setAttribute("data-default-collapsed", "false");
     document.body.appendChild(script);
-
     return () => {
-      try {
-        document.body.removeChild(script);
-        const root = document.getElementById("foxes-widget-root");
-        if (root) root.remove();
-      } catch {}
+      window.dispatchEvent(new CustomEvent("foxes:search:destroy"));
+      script.remove();
+      document.getElementById("foxes-launcher-host")?.remove();
     };
   }, []);
 
   return null;
+}
+
+export const SEARCH_TRY_QUESTIONS = [
+  "Desert safari with dinner",
+  "Snorkeling trip for a family in Hurghada",
+  "رحلة غطس في الغردقة",
+  "How do I fix my car engine?",
+] as const;
+
+/** Each question opens the live search bar with that query. */
+export function SearchTryQuestions() {
+  return (
+    <div className="mt-8 flex flex-wrap justify-center gap-3">
+      {SEARCH_TRY_QUESTIONS.map((q) => (
+        <button
+          key={q}
+          type="button"
+          dir="auto"
+          onClick={() => window.dispatchEvent(new CustomEvent("foxes:search:open", { detail: { query: q } }))}
+          className="rounded-full border border-emerald-200 bg-emerald-50 px-5 py-2.5 text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition"
+        >
+          {q}
+        </button>
+      ))}
+    </div>
+  );
 }
