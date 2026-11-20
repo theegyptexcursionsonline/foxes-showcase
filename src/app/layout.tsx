@@ -4,8 +4,8 @@ import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 
 export const metadata: Metadata = {
-  title: "Foxes Technology | AI-Powered Solutions for Hospitality",
-  description: "Try AI Voice, AI Search and AI Booking live on demo businesses.",
+  title: "Foxes Technology | AI Voice, AI Search, AI Booking and FoxesConnect demo",
+  description: "Try AI Voice, AI Search, AI Booking and FoxesConnect on one demo business, Foxes Demo Tours.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -131,7 +131,7 @@ export function VoiceHeroCard({
           </div>
 
           <p className="text-center text-xs text-white/30 mt-2">
-            {isActive ? "Speaking with agent..." : "Type or talk, in English or Arabic"}
+            {isActive ? "Speaking with agent..." : "Open it, then choose Type instead"}
           </p>
         </div>
 

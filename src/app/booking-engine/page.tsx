@@ -36,7 +36,7 @@ export default function BookingEnginePage() {
           </h1>
 
           <p className="mt-6 text-lg sm:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
-            A booking calendar for your website: choose a tour, a date, a time and guests, with the price from live availability. Below it runs on the Foxes demo catalogue.
+            A booking calendar for your website: choose a tour, a date, a time and guests, with the price from live availability. Below it runs on Foxes Demo Tours, the same tours and prices as the other pages.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -55,7 +55,7 @@ export default function BookingEnginePage() {
           <div className="text-center mb-10">
             <p className="text-sm font-semibold text-blue-600 uppercase tracking-wider">Live demo</p>
             <h2 className="mt-3 text-4xl font-bold text-slate-900">Try the booking calendar</h2>
-            <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">Pick a date, a time and guests to see the price. This is the Foxes demo catalogue, not a real operator: card payment is switched off here, so please do not complete a booking.</p>
+            <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">Pick a date, a time and guests to see the price. This is Foxes Demo Tours, a demo business: no card is charged and no email is sent.</p>
           </div>
           <BookingCalendar />
           <div className="mt-10 rounded-2xl bg-slate-900 p-6 text-left overflow-x-auto">

@@ -41,7 +41,7 @@ export default function SearchAgentPage() {
           </h1>
 
           <p className="mt-6 text-lg sm:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
-            A search bar and answer panel that understands what visitors mean and answers with real trips. Use the search bar at the bottom of this page: it runs on the AI Search demo catalogue of Egypt tours.
+            A search bar and answer panel that understands what visitors mean and answers with real trips. Use the search bar at the bottom of this page: it runs on the Foxes Demo Tours catalogue, the same five tours as the other pages.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -60,7 +60,7 @@ export default function SearchAgentPage() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <p className="text-sm font-semibold text-emerald-600 uppercase tracking-wider">Live demo</p>
           <h2 className="mt-3 text-4xl font-bold text-slate-900">Try it now</h2>
-          <p className="mt-4 text-lg text-slate-500">Type in the search bar at the bottom of the screen, or pick a question below. Results come from the AI Search demo catalogue.</p>
+          <p className="mt-4 text-lg text-slate-500">Type in the search bar at the bottom of the screen, or pick a question below. Results come from the Foxes Demo Tours catalogue.</p>
           <SearchTryQuestions />
         </div>
       </section>

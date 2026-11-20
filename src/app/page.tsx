@@ -4,7 +4,7 @@ const products = [
   {
     name: "AI Voice",
     tagline: "Your AI concierge, 24/7",
-    desc: "A voice and typed concierge for your website that answers from your own tours, in English and Arabic. Try it below on the Red Sea Trails demo business.",
+    desc: "A voice and typed concierge for your website that answers from your own tours and prices. Try it on Foxes Demo Tours, the demo business every page here uses.",
     href: "/voice-agent",
     gradient: "from-indigo-500 via-pink-500 to-orange-500",
     shadow: "shadow-indigo-500/20",
@@ -30,6 +30,16 @@ const products = [
     shadow: "shadow-blue-500/20",
     icon: "M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5",
     features: ["Live availability", "Dates, times and guests", "Price shown before booking", "Embeds on any site"],
+  },
+  {
+    name: "FoxesConnect",
+    tagline: "One inbox for every customer question",
+    desc: "A website chat that answers from your help articles and hands a conversation to your team when it cannot answer.",
+    href: "/foxesconnect",
+    gradient: "from-blue-500 via-violet-500 to-purple-500",
+    shadow: "shadow-blue-500/20",
+    icon: "M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5",
+    features: ["Website chat", "Answers from your help articles", "Hand-over to your team", "Shared inbox"],
   },
 ];
 
@@ -64,7 +74,7 @@ export default function Home() {
           </h1>
 
           <p className="mt-6 text-lg sm:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
-            Voice, search and booking for tour and travel businesses. Each one below runs live on this page, on a demo business.
+            Voice, search, booking and customer chat for tour and travel businesses. Each one below runs live on one demo business, Foxes Demo Tours.
           </p>
         </div>
 
@@ -80,7 +90,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wider">Our Products</p>
-            <h2 className="mt-3 text-4xl font-bold text-slate-900">Three products, one platform</h2>
+            <h2 className="mt-3 text-4xl font-bold text-slate-900">Four products, one demo business</h2>
             <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
               Each product works on its own or together. Open one to try it.
             </p>

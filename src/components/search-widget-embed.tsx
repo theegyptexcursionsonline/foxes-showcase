@@ -13,9 +13,9 @@ export function SearchWidgetEmbed() {
     script.async = true;
     script.setAttribute("data-widget-id", SEARCH_DEMO.widgetId);
     script.setAttribute("data-style", "searchbar");
-    script.setAttribute("data-label", "Search Egypt trips");
+    script.setAttribute("data-label", "Search Foxes Demo Tours");
     script.setAttribute("data-kicker", "AI Search demo");
-    script.setAttribute("data-placeholder", "Try: desert safari with dinner");
+    script.setAttribute("data-placeholder", "Try: sunset yacht");
     script.setAttribute("data-color", "#059669");
     script.setAttribute("data-default-collapsed", "false");
     document.body.appendChild(script);
@@ -30,9 +30,9 @@ export function SearchWidgetEmbed() {
 }
 
 export const SEARCH_TRY_QUESTIONS = [
-  "Desert safari with dinner",
-  "Snorkeling trip for a family in Hurghada",
-  "رحلة غطس في الغردقة",
+  "Sunset yacht",
+  "Nile dinner cruise",
+  "رحلة منطاد في الأقصر",
   "How do I fix my car engine?",
 ] as const;
 

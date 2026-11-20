@@ -6,6 +6,7 @@ const productLinks = [
   { name: "AI Voice", href: "/voice-agent" },
   { name: "AI Search", href: "/search-agent" },
   { name: "AI Booking", href: "/booking-engine" },
+  { name: "FoxesConnect", href: "/foxesconnect" },
 ];
 
 export function Footer() {
@@ -27,7 +28,7 @@ export function Footer() {
               <span className="text-xl font-bold text-white">Foxes Technology</span>
             </div>
             <p className="text-sm text-white/40 max-w-sm leading-relaxed">
-              AI Voice, AI Search and AI Booking for tour and travel businesses, each shown here working on a demo business.
+              AI Voice, AI Search, AI Booking and FoxesConnect for tour and travel businesses, each shown here working on one demo business.
             </p>
           </div>
 

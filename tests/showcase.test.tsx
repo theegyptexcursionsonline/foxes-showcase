@@ -5,7 +5,8 @@ import { render, cleanup, fireEvent } from "@testing-library/react";
 import { SearchTryQuestions, SearchWidgetEmbed, SEARCH_TRY_QUESTIONS } from "@/components/search-widget-embed";
 import { WidgetEmbed } from "@/components/widget-embed";
 import { BookingCalendar } from "@/components/booking-calendar";
-import { VOICE_DEMO, SEARCH_DEMO, BOOKING_DEMO, LIVE_HOSTS } from "@/lib/showcase-config";
+import { ConnectWidgetEmbed } from "@/components/connect-widget-embed";
+import { VOICE_DEMO, SEARCH_DEMO, BOOKING_DEMO, CONNECT_DEMO, LIVE_HOSTS } from "@/lib/showcase-config";
 
 const SRC = path.resolve(__dirname, "../src");
 const files = (dir: string): string[] =>
@@ -92,6 +93,26 @@ describe("widgets mount on the demo businesses", () => {
     expect(s.src).toBe(BOOKING_DEMO.scriptUrl);
     s.dispatchEvent(new Event("error"));
     return findByRole("status").then((n) => expect(n.textContent).toMatch(/could not load/));
+  });
+});
+
+describe("one demo business", () => {
+  it("FoxesConnect loads the production chat for the demo business", () => {
+    render(<ConnectWidgetEmbed />);
+    const s = document.getElementById("foxes-connect-embed-script") as HTMLScriptElement | null;
+    expect(s?.src).toBe(CONNECT_DEMO.scriptUrl);
+    expect(s?.getAttribute("data-org")).toBe(CONNECT_DEMO.org);
+  });
+
+  it("no page names another business than Foxes Demo Tours", () => {
+    expect(VOICE_DEMO.business).toBe("Foxes Demo Tours");
+    for (const { f, s } of sources) expect(s, f).not.toMatch(/Red Sea Trails|Egypt Excursions Online|wgt_CXtars0OalnORU0z2rgcvw|wgt_6JW5umlfasNQfJywtFPs6g/);
+  });
+
+  it("the site title names the products without claim wording", () => {
+    const layout = sources.find(({ f }) => f.endsWith(path.join("app", "layout.tsx")))!.s;
+    expect(layout).not.toMatch(/AI-Powered Solutions/);
+    expect(layout).toMatch(/AI Voice, AI Search, AI Booking and FoxesConnect/);
   });
 });
 

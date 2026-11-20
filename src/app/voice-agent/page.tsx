@@ -12,10 +12,9 @@ const features = [
 
 const sampleQuestions = [
   "What tours do you offer?",
-  "Do you pick up from El Gouna?",
-  "Which trip suits a family with young children?",
-  "How much is a snorkeling trip for 4 adults?",
-  "ما هي الرحلات المتاحة؟",
+  "How much is the Atlas Desert Rally for a private 4x4?",
+  "What time does the Nile Sky Floating Dinner start?",
+  "Do you run diving courses?",
 ];
 
 const steps = [
@@ -53,7 +52,7 @@ export default function VoiceAgentPage() {
               </h1>
 
               <p className="mt-6 text-lg sm:text-xl text-white/60 max-w-xl leading-relaxed">
-                A website concierge that answers guests by voice or text, from your own tours. This page runs it for Red Sea Trails, a demo tour business in Hurghada.
+                A website concierge that answers guests by voice or text, from your own tours. This page runs it for Foxes Demo Tours, a demo tour business; its tours and prices are the same on every page of this site.
               </p>
 
               <div className="mt-10 flex flex-col sm:flex-row items-center lg:items-start gap-4">
@@ -73,12 +72,12 @@ export default function VoiceAgentPage() {
             <div className="flex justify-center lg:justify-end">
               <VoiceHeroCard
                 agentName="Rami"
-                agentRole="Red Sea Trails concierge (demo)"
+                agentRole="Foxes Demo Tours concierge (demo)"
                 accent="indigo"
                 samplePrompts={[
                   "What tours do you offer?",
-                  "Do you pick up from Makadi Bay?",
-                  "Is snorkeling good for children?",
+                  "How much is the Luxor balloon?",
+                  "What time is the Nile dinner?",
                 ]}
               />
             </div>
@@ -114,7 +113,7 @@ export default function VoiceAgentPage() {
           <div className="text-center mb-16">
             <p className="text-sm font-semibold text-pink-600 uppercase tracking-wider">Live Demo</p>
             <h2 className="mt-3 text-4xl font-bold text-slate-900">Talk to the demo concierge now</h2>
-            <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">Open the widget in the bottom-right corner and type or speak. Rami answers for Red Sea Trails, a demo tour business; it is not a real company, so no booking is made.</p>
+            <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">Open the widget in the bottom-right corner and choose Type instead. Rami answers in English for Foxes Demo Tours, a demo business; spoken calls are not switched on for this demo.</p>
           </div>
           <div className="grid gap-10 lg:grid-cols-2 items-center">
             <div>
@@ -141,7 +140,7 @@ export default function VoiceAgentPage() {
                 </div>
                 <p className="mt-6 text-white/40 text-sm">Open the widget in the bottom-right corner</p>
                 <div className="mt-8 grid grid-cols-3 gap-4">
-                  {[{ label: "Concierge", value: "Rami" }, { label: "Business", value: "Red Sea Trails" }, { label: "Languages", value: "EN · AR" }].map((item) => (
+                  {[{ label: "Concierge", value: "Rami" }, { label: "Business", value: "Foxes Demo Tours" }, { label: "Mode", value: "Typed chat" }].map((item) => (
                     <div key={item.label} className="rounded-xl bg-white/5 border border-white/10 p-3">
                       <p className="text-xs text-white/40">{item.label}</p>
                       <p className="text-sm font-semibold text-white mt-0.5">{item.value}</p>
